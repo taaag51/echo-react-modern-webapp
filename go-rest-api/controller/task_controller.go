@@ -31,7 +31,7 @@ func (tc *taskController) GetAllTasks(c echo.Context) error {
 	claims := user.Claims.(jwt.MapClaims)
 	userId := claims["user_id"]
 
-	tasksRes, err := tc.tu.GetAllTasks(unit(userId.(float64)))
+	tasksRes, err := tc.tu.GetAllTasks(uint(userId.(float64)))
 	if err != nil {
 		return c.JSON(http.StatusInternalServerError, err.Error())
 	}
@@ -71,7 +71,7 @@ func (tc *taskController) CreateTask(c echo.Context) error {
 func (tc *taskController) UpdateTask(c echo.Context) error {
 	user := c.Get("user").(*jwt.Token)
 	claims := user.Claims.(jwt.MapClaims)
-	userId := claims("user_id")
+	userId := claims["user_id"]
 	id := c.Param("taskId")
 	taskId, _ := strconv.Atoi(id)
 
@@ -89,7 +89,7 @@ func (tc *taskController) UpdateTask(c echo.Context) error {
 func (tc *taskController) DeleteTask(c echo.Context) error {
 	user := c.Get("user").(*jwt.Token)
 	claims := user.Claims.(jwt.MapClaims)
-	userId := claims("user_id")
+	userId := claims["user_id"]
 	id := c.Param("taskId")
 	taskId, _ := strconv.Atoi(id)
 
