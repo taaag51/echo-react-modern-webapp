@@ -6,7 +6,7 @@ import (
 	"net/http"
 	"strconv"
 
-	"github.com/golang-jwt/jwt/v4"
+	"github.com/golang-jwt/jwt/v5"
 	"github.com/labstack/echo/v4"
 )
 
@@ -42,7 +42,7 @@ func (tc *taskController) GetTaskById(c echo.Context) error {
 	user := c.Get("user").(*jwt.Token)
 	claims := user.Claims.(jwt.MapClaims)
 	userId := claims["user_id"]
-	id := c.Param("task_id")
+	id := c.Param("taskId")
 	taskId, _ := strconv.Atoi(id)
 	taskRes, err := tc.tu.GetTaskById(uint(userId.(float64)), uint(taskId))
 	if err != nil {
