@@ -18,5 +18,10 @@ func NewTaskValidator() ITaskValidator {
 
 func (tv *taskValidator) TaskVlidate(task model.Task) error {
 	return validation.ValidateStruct(&task,
-		validation)
+		validation.Field(
+			&task.Title,
+			validation.Required.Error("title is required"),
+			validation.RuneLength(1,10).Error("limited max 10 char")
+		),
+	)
 }
