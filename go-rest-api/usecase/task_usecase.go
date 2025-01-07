@@ -3,6 +3,7 @@ package usecase
 import (
 	"go-rest-api/model"
 	"go-rest-api/repository"
+	"go-rest-api/validator"
 )
 
 type ITaskUsecase interface {
@@ -15,6 +16,7 @@ type ITaskUsecase interface {
 
 type taskUsecase struct {
 	tr repository.ITaskRepository
+	tv validator.IUserValidator
 }
 
 func NewTaskUsecase(tr repository.ITaskRepository) ITaskUsecase {
