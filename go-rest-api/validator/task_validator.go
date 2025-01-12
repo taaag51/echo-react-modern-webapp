@@ -7,21 +7,21 @@ import (
 )
 
 type ITaskValidator interface {
-	TaskVlidate(task model.Task) error
+	TaskValidate(task model.Task) error
 }
 
 type taskValidator struct{}
 
 func NewTaskValidator() ITaskValidator {
-	return &taskValitor{}
+	return &taskValidator{}
 }
 
-func (tv *taskValidator) TaskVlidate(task model.Task) error {
+func (tv *taskValidator) TaskValidate(task model.Task) error {
 	return validation.ValidateStruct(&task,
 		validation.Field(
 			&task.Title,
 			validation.Required.Error("title is required"),
-			validation.RuneLength(1,10).Error("limited max 10 char")
+			validation.RuneLength(1, 10).Error("limited max 10 char"),
 		),
 	)
 }

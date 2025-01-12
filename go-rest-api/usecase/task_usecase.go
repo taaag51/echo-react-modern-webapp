@@ -16,10 +16,10 @@ type ITaskUsecase interface {
 
 type taskUsecase struct {
 	tr repository.ITaskRepository
-	tv validator.IUserValidator
+	tv validator.ITaskValidator
 }
 
-func NewTaskUsecase(tr repository.ITaskRepository, tv validator.IUserValidator) ITaskUsecase {
+func NewTaskUsecase(tr repository.ITaskRepository, tv validator.ITaskValidator) ITaskUsecase {
 	return &taskUsecase{tr, tv}
 }
 
@@ -72,7 +72,7 @@ func (tu *taskUsecase) CreateTask(task model.Task) (model.TaskResponse, error) {
 }
 
 func (tu *taskUsecase) UpdateTask(task model.Task, userId uint, taskId uint) (model.TaskResponse, error) {
-	if err := tu.tv.taskValidate(task); err != nil {
+	if err := tu.tv.TaskValidate(task); err != nil {
 		return model.TaskResponse{}, err
 	}
 	if err := tu.tr.UpdateTask(&task, userId, taskId); err != nil {
