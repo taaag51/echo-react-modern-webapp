@@ -31,4 +31,4 @@ go.work.sum
 # API Key
 
 # Sample dir
-echo-rest-api
+./sample
