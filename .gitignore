@@ -31,4 +31,5 @@ go.work.sum
 # API Key
 
 # Sample dir
-./sample
+sample/echo-rest-api
+sample/react-todo
