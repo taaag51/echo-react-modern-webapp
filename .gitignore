@@ -35,11 +35,11 @@ sample/echo-rest-api
 sample/react-todo
 
 # Frontend
-frontend/node_modules
-frontend/.pnp
-frontend/.pnp.js
-frontend/coverage
-frontend/build
-frontend/npm-debug.log*
-frontend/yarn-debug.log*
-frontend/yarn-error.log*
+react-todo/node_modules
+react-todo/.pnp
+react-todo/.pnp.js
+react-todo/coverage
+react-todo/build
+react-todo/npm-debug.log*
+react-todo/yarn-debug.log*
+react-todo/yarn-error.log*
