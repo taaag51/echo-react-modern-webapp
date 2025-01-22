@@ -1,7 +1,7 @@
 import axios from 'axios'
+import { useError } from './useError'
 import { useQuery } from '@tanstack/react-query'
 import { Task } from '../types'
-import { useError } from '../hooks/useError'
 
 export const useQueryTasks = () => {
   const { switchErrorHandling } = useError()
